@@ -17,4 +17,10 @@ public class ExampleRest {
 		return kijko;
 	}
 	
+	@RequestMapping("/rests/example2")
+	public ExamplePerson kononowicz() {
+		ExamplePerson kijko = new ExamplePerson("Zbyszek", "Kononowicz", 66);
+		
+		return kijko;
+	}
 }

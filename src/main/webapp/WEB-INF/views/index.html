@@ -12,6 +12,10 @@
 						.then(function(response) {
 							$scope.person = response.data;
 						});
+				$http.get('http://localhost:8080/rests/example2')
+				.then(function(response) {
+					$scope.person2 = response.data;
+				});
 			});
 </script>
 
@@ -23,6 +27,9 @@
 		<p>Imie:  {{person.name}}</p>
 		<p>Nazwisko: {{person.secoundName}}</p>
 		<p>Wiek: {{person.age}}</p>
+		<p>Imie:  {{person2.name}}</p>
+		<p>Nazwisko: {{person2.secoundName}}</p>
+		<p>Wiek: {{person2.age}}</p>
 	</div>
 </body>
 </html>
