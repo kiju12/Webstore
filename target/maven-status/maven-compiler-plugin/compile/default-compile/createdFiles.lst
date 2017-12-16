@@ -1,0 +1,5 @@
+webstore\controllers\ExampleController.class
+webstore\rests\ExampleRest.class
+webstore\Webstore.class
+webstore\ViewResolver.class
+webstore\domain\ExamplePerson.class

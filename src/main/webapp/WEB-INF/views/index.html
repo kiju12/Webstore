@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="demo">
+<head>
+<title>Przyklad</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script>
+	angular.module('demo', []).controller(
+			'Hello',
+			function($scope, $http) {
+				$http.get('http://localhost:8080/rests/example')
+						.then(function(response) {
+							$scope.person = response.data;
+						});
+			});
+</script>
+
+
+</head>
+
+<body>
+	<div ng-controller="Hello">
+		<p>Imie:  {{person.name}}</p>
+		<p>Nazwisko: {{person.secoundName}}</p>
+		<p>Wiek: {{person.age}}</p>
+	</div>
+</body>
+</html>
