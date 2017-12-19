@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
   
-<html>
+<html xmlns="http://thymeleaf.org">
 <head>
       <title>Spring Boot - POST-GET AJAX Example</title>
       <meta charset="utf-8" />
@@ -11,6 +11,8 @@
  
 <div class="container">
   <h1>Bootstrap Modal</h1>
+  <h1 th:utext="${kijko.getName()}">Thymeleaf Test</h1>
+<!--   <h1 th:text="${kijko.age}">wiek</h1> -->
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" id="btnId">Open Modal</button>
  
