@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Dodaj produkt</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+      	<link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Panel dodawania produktow</h1>
+			<form class="form-group" action="#" method="post" th:action="@{/save}" th:object="${product}">
+				<p>Nazwa produktu: <input type="text" th:field="*{name}" class="form-control"/></p>
+				<p>Krotki opis: <textarea  th:field="*{shortDescription}" class="form-control" rows="1" cols="1"/></p>
+				<p>Opis: <textarea th:field="*{description}" class="form-control" rows="2" cols="1"/></p>
+				<p>Cena: <input type="text" th:field="*{price}" class="form-control"/></p>
+				<p>Stan magazynowy: <input type="number" th:field="*{quantity}" min="0" max="9999" class="form-control"/></p>
+	
+				<input type="submit" value="Zapisz" />
+			</form>
+			<a th:href="@{/show}">Pokaz wszystkie produkty</a>
+		</div>
+	</body>
+</html>
