@@ -11,30 +11,13 @@
 
 	<div class="container">
 		<h1>Bootstrap Modal</h1>
-		<a th:href="@{/test}"> TEST </a>
-		<div th:each="osoba, licznik : ${lista}">
-
-			<div th:object="${osoba}" th:if="${not osoba.isZiomek()}">
-				<h1 th:text="${licznik.count}"></h1>
-
-				<h1 th:text="*{name}">IMIE</h1>
-				<h1 th:text="${osoba}">WIEK</h1>
-			</div>
-		</div>
+		<form action="#" th:action="@{/}" th:object="${seed}" method="post">
 		
-		<div th:each="osoba, licznik : ${lista}">
-			<h1 th:text="${licznik.count}"></h1>
-			<div th:switch="${osoba.name}">
-				<h1 th:case="Maciej" th:fragment="kijko"> KIJKO  OBECNY WLASNIE TAK</h1>
-				<h1 th:case="*"> TO NIE KIJKO</h1>
-			</div>
+			<input type="text" th:field="*{content}"/>
+			
 		
-		</div>
 		
-		<div th:with="x=${lista[0].name} + 'ziom' ">
-			<h1 th:text="${x}"></h1>
-		
-		</div>
+		</form>
 
 
 		<!-- Trigger the modal with a button -->

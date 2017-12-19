@@ -17,11 +17,18 @@ public class BootstrapController {
 	
 	@RequestMapping(value="/",method = RequestMethod.GET)
     public String home(Model model){
-		model.addAttribute("kijko", repo.getEx1());
+		model.addAttribute("lista", repo.getList());
 		
         return "bootstraphelloworld";
     }
     
+	@RequestMapping(value="/test", method= RequestMethod.GET)
+	public String test(Model model) {
+		model.addAttribute("seed", repo);
+		
+		return "test";
+	}
+	
     @ResponseBody
     @RequestMapping(value="/greeting",method = RequestMethod.GET)
     public String Greeting(){
