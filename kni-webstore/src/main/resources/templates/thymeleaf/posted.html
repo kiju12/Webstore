@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Zastap head, fragmentem podpisanym header, z pliku thymeleaf.html 
+(thymeleaf/thymeleaf - bo znajduje sie jeszcze w folderze) -->
+<head th:replace="thymeleaf/thymeleaf :: header">
+
+<!-- HEADER SKOPIOWANY Z thymeleaf.html -->
+
+</head>
+<body>
+		
+		<h1 th:if="${example.stringEmpty()}">Pole dataString jest puste, nie mozna wyswietlic</h1>
+
+		<ul th:unless="${example.dataString.isEmpty()}" th:object="${example}">
+			<b>Pole dataString: </b>
+			<li th:text="*{dataString}"> ... </li>
+			<b>Checkbox: </b>
+			<li th:text="*{checked}"> ... </li>
+			<b>RadioButton: </b>
+			<li th:text="*{gender}"> ... </li>
+			<b>Element z listy rozwijalnej: </b>
+			<li th:text="*{dropDownSelect}"> ... </li>
+			<b>Element na wybranym indexie w tablicy: tab = { <b th:each="el : *{tab}" th:text="${el}"> </b> }</b> 
+			
+<!-- 			WAZNE - pobieranie elementu z tablicy za pomoca innej zmiennej w Springu musi wygladac tak -->
+			<li th:text="*{tab[__*{index}__]}"> Element z tablicy </li>
+		</ul>
+		
+	<h1></h1>	
+	
+	
+</body>
+</html>

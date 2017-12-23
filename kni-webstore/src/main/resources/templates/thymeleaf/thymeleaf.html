@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Zapisanie calego headera jako fragment o nazwie header -->
+<head th:fragment="header"> 
+<meta charset="UTF-8" />
+
+<!-- Tytul pobierany z messages.properties -->
+<title th:text="#{hello.title}">...</title>
+
+<style>
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+</style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+
+<!-- 	Tekst z messages.properties, pobrany na poziomie kodu Javy i wyslany przez model (bezsensu, ale da sie) -->
+	<h1 th:text="${title}"> ... </h1>
+	<h1 th:text="${titleUS}"> ... </h1>
+	
+	<!-- Formularz -->
+	<form action="#" th:action="@{/thymeleaf}" method="post" th:object="${example}">
+		<div>
+			<b>Pole String:</b>
+			<input type="text" th:field="*{dataString}" />
+			
+<!-- 			Label wyswietlany, gdy Pole String nie przejdzie walidacji, w tym przypadku, gdy bedzie puste -->
+			<label th:if="${#fields.hasErrors('dataString')}"> Pole nie moze byc puste! </label>
+		
+		</div>
+
+
+		<div>
+			<b>CheckBox</b> 
+			<input type="checkbox" th:field="*{checked}" />
+		</div>
+
+
+		<div>
+		
+<!-- 		Petla foreach wyswietla tyle RadioButtonow, ile elementow znajduje sie w genders, podpisujac je -->
+			<b th:each="g : *{genders}"> 
+			<label th:text="${g}"> ... </label> 
+			<input type="radio" th:value="${g}" th:field="*{gender}" />
+			</b>
+		</div>
+
+		<div>
+		
+<!-- 		Tu rowniez petla wyswietla elementy listy, Z LISTY W OBIEKCIE EXAMPLE :D  -->
+			<label>Lista rozwijalna: </label> 
+			
+			<select th:field="*{dropDownSelect}">
+				<div th:each="element, licznik : *{dropDownList}">
+					<option th:value="${element}" th:text="${licznik.count}" />
+				</div>
+			</select>
+			
+		</div>
+
+		<div>
+<!-- 		Licznik w petli foreach -->
+			<label>Wybierz index tablicy: </label> <select th:field="*{index}">
+				<div th:each="element, licznik : *{tab}">
+					<option th:value="${licznik.index}" th:text="${licznik.index}" />
+				</div>
+			</select>
+		</div>
+		<input type="submit" value="Inicjalizacja" />
+	</form>
+
+<!-- 	Jesli string pusty lub nie przejdzie walidacji to niewyswietlaj -->
+	<a th:href="@{/zmienne}"  th:unless="${example.stringEmpty() or #fields.hasErrors('example.dataString')}">
+		Zobacz pola obiektu
+	</a>
+	
+</body>
+</html>
