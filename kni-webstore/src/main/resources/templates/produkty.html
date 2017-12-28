@@ -8,6 +8,7 @@
       <link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css" />
 	</head>
 	<body>
+	
 		<div th:if="not ${allProducts.isEmpty()}">
 			<div class="container">
 				<h1>Wszystkie produkty w bazie danych:</h1>
@@ -27,6 +28,7 @@
 						<td th:text="*{description}">Dluzszy opis prouduktu</td>
 						<td th:text="|*{price} zł|">2300</td>
 						<td th:text="*{quantity}">4</td>
+						
 					</tr>
 				</table>
 			</div>
@@ -36,6 +38,10 @@
 				<h1>Na razie nie ma zadnych danych</h1> 
 			</div>
 		</div>
+		
+<!-- 		Wstawienie kopiowanego fragmentu z index.html -->
+		<div th:replace="index :: kopia"></div>
+		
 		
 	</body>
 </html>

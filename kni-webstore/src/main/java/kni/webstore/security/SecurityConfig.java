@@ -22,12 +22,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 				.antMatchers(
+					"/",
 					"/rejestracja",
+					"/produkty",
 					"/js/**",
 					"/css/**",
 					"/img/**",
-					"/webjars/**",
-					"/").permitAll()
+					"/webjars/**").permitAll()
 				.antMatchers("/panelAdmina/**").hasAnyAuthority("ROLE_ADMIN")
 				.anyRequest().authenticated()
 			.and()

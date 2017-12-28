@@ -11,12 +11,16 @@
     <title>Strona glowna</title>
 </head>
 <body>
-<div class="container">
-    <h1>Sklep internetowy</h1>
-</div>
+	<div class="container">
+		<h1>Sklep internetowy</h1>
+		<a th:href="@{/show}">Pokaz wszystkie produkty</a>
+		
+<!-- 	Kopiowanie fragmentu, w celu wielokrotnego użycia -->
+		<h1 th:fragment="kopia">Kopiowany fragment</h1>
 
-<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
-<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-
+	</div>
+	<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+		
 </body>
 </html>
