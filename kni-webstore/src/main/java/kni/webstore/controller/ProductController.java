@@ -14,12 +14,10 @@ import kni.webstore.repository.ProductRepository;
 
 @Controller
 public class ProductController {
+	
+	@Autowired
 	private ProductRepository productRepository;
 
-	@Autowired
-	public ProductController(ProductRepository productRepository) {
-		this.productRepository = productRepository;
-	}
 	
 	@PostMapping("/save")
 	public String saveProduct(@ModelAttribute Product product) {
