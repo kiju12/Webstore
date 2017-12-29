@@ -7,4 +7,5 @@ import kni.webstore.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+	public Product findById(Long id);
 }

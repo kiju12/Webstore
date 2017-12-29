@@ -9,10 +9,13 @@
 	<body>
 		<div class="container">
 			<h1>Panel dodawania produktow</h1>
-			<form class="form-group" action="#" method="post" th:action="@{/save}" th:object="${product}">
+			<form class="form-group" action="#" method="post" th:action="@{/saveProduct}" th:object="${product}">
 				<p>Nazwa produktu: <input type="text" th:field="*{name}" class="form-control"/></p>
-				<p>Krotki opis: <textarea  th:field="*{shortDescription}" class="form-control" rows="1" cols="1"/></p>
-				<p>Opis: <textarea th:field="*{description}" class="form-control" rows="2" cols="1"/></p>
+					<p class="error-message"
+                       th:each="error: ${#fields.errors('name')}"
+                       th:text="${error}">Prosze podac nazwe produktu</p>
+				<p>Krotki opis: <textarea  th:field="*{shortDescription}" class="form-control" rows="1" cols="1"></textarea></p>
+				<p>Opis: <textarea th:field="*{description}" class="form-control" rows="2" cols="1"></textarea></p>
 				<p>Cena: <input type="text" th:field="*{price}" class="form-control"/></p>
 				<p>Stan magazynowy: <input type="number" th:field="*{quantity}" min="0" max="9999" class="form-control"/></p>
 	

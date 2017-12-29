@@ -16,20 +16,19 @@
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Nazwa</th>
-						<th scope="col">Krotki opis</th>
-						<th scope="col">Opis</th>
+						<th scope="col">Kategoria</th>
 						<th scope="col">Cena</th>
 						<th scope="col">Ilość</th>
-					</tr>
+						<th scope="col">Zobacz</th>
+					</tr>	
 					<tr th:each="singleProduct: ${allProducts}" th:object="${singleProduct}">
 						<td th:text="*{id}">1</td>
 						<td th:text="*{name}">Telewizor LG</td>
-						<td th:text="*{shortDescription}">Przekątna 42', roczna gwarancja</td>
-						<td th:text="*{description}">Dluzszy opis prouduktu</td>
-						<td th:text="|*{price} zł|">2300</td>
+						<td th:text="*{category}">Kategoria</td>
+						<td th:text="|*{price} zł|">2300.0</td>
 						<td th:text="*{quantity}">4</td>
-						
-					</tr>
+						<td><a href="#" th:href="@{'/produkty/produkt/' + *{id}}"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+					</tr> 
 				</table>
 			</div>
 		</div>

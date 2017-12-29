@@ -2,11 +2,15 @@ package kni.webstore.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kni.webstore.model.Product;
@@ -19,8 +23,12 @@ public class ProductController {
 	private ProductRepository productRepository;
 
 	
-	@PostMapping("/save")
-	public String saveProduct(@ModelAttribute Product product) {
+	@PostMapping("/saveProduct")
+	public String saveProduct(@ModelAttribute @Valid Product product, BindingResult result) {
+		if(result.hasErrors()) {
+			return "dodajProdukt";
+		}
+		
 		productRepository.save(product);
 		return "redirect:/panelAdmina/dodajProdukt";
 	}
@@ -30,6 +38,13 @@ public class ProductController {
 		List<Product> allProducts = productRepository.findAll();
 		model.addAttribute("allProducts", allProducts);
 		return "produkty";
+	}
+	
+	@GetMapping("/produkty/produkt/{id}")
+	public String pojedynczyProdukt(@PathVariable Long id, Model model) {
+		Product produkt = productRepository.findById(id);
+		model.addAttribute("produkt", produkt);
+		return "zobaczProdukt";
 	}
 	
 	@GetMapping(value="/panelAdmina/dodajProdukt")

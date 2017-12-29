@@ -24,11 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers(
 					"/",
 					"/rejestracja",
-					"/produkty",
+					"/produkty/**",
 					"/js/**",
 					"/css/**",
 					"/img/**",
-					"/webjars/**").permitAll()
+					"/webjars/**",
+					"/bootstrap-3.3.7/**").permitAll()
 				.antMatchers("/panelAdmina/**").hasAnyAuthority("ROLE_ADMIN")
 				.anyRequest().authenticated()
 			.and()

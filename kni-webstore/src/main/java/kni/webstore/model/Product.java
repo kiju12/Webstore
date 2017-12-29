@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "nazwa")
+	@NotEmpty
 	private String name;
 	@Column(name = "krotki_opis")
 	private String shortDescription;
@@ -21,16 +24,20 @@ public class Product {
 	private double price;
 	@Column(name = "ilosc")
 	private int quantity;
+	@Column(name = "kategoria")
+	private String category;
 
 	public Product() {
 	}
 
-	public Product(String name, String shortDescription, String description, double price, int quantity) {
+	public Product(String name, String shortDescription, String description, double price, int quantity,
+			String category) {
 		this.name = name;
 		this.shortDescription = shortDescription;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -79,6 +86,14 @@ public class Product {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 }
